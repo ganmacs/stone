@@ -10,7 +10,7 @@ module Stone
 
     def call(m)
       reset(m)
-      token.new(@line_no, matched) unless space? && comment?
+      token.new(@line_no, matched) unless space? || comment?
     end
 
     private
