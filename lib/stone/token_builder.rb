@@ -60,6 +60,7 @@ module Stone
 
     def reset(m)
       @m = m
+      @num = nil
       @matched = nil
       @comment = nil
       @str = nil

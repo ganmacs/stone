@@ -3,16 +3,6 @@ module Stone
     class Base
       attr_reader :line_number
 
-      class << self
-        def eof
-          Base.new(-1)
-        end
-
-        def eol
-          "\n"
-        end
-      end
-
       def initialize(line_number)
         @line_number = line_number
       end

@@ -1,4 +1,6 @@
 require 'stone/lexer'
+require 'stone/line_number_reader'
+require 'stone/token'
 
 module Stone
   class Runner
@@ -7,19 +9,16 @@ module Stone
     end
 
     def call
-      Stone::Lexer.new(file).read
+      lexer = Stone::Lexer.new(reader)
+      while (token = lexer.read_token) != Token::EOF
+        p token
+      end
     end
 
     private
 
-    def file
-      @file ||= open_file
-    end
-
-    def open_file
-      open(@file_name).map.with_index do |line, i|
-        [i, line.strip]
-      end
+    def reader
+      @reader ||= LineNumberReader.new(@file_name)
     end
   end
 end
