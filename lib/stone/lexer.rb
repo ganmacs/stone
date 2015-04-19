@@ -8,7 +8,6 @@ module Stone
     # @reader LineNumberReader instance
     def initialize(reader)
       @reader = reader
-      @tokens = []
     end
 
     def read_token
@@ -21,6 +20,16 @@ module Stone
       token(n)
     end
 
+    def each_token
+      loop do
+        read_line
+        tokens.each do |token|
+          yield(token)
+        end
+        reset
+      end
+    end
+
     private
 
     def take_tokens(n = 0)
@@ -29,12 +38,12 @@ module Stone
         break if has_tokens?(n)
         read_line
       end
-    rescue EOFError
+    rescue StopIteration
       nil                       # TODO
     end
 
     def read_line
-      @tokens.concat(next_line_tokens)
+      tokens.concat(next_line_tokens)
     end
 
     def next_line_tokens
@@ -53,15 +62,15 @@ module Stone
     end
 
     def token!
-      @tokens.shift || Token::EOF
+      tokens.shift || Token::EOF
     end
 
     def token(i = 0)
-      @tokens[i] || Token::EOF
+      tokens[i] || Token::EOF
     end
 
     def has_tokens?(i = 0)
-      @tokens.size > i
+      tokens.size > i
     end
 
     def line
@@ -72,8 +81,13 @@ module Stone
       @token_builder ||= Stone::TokenBuilder.new
     end
 
+    def tokens
+      @tokens ||= []
+    end
+
     def reset
       @line = nil
+      @tokens = []
     end
   end
 end

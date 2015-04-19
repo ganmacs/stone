@@ -1,34 +1,39 @@
+# Delegete Enumrator Class
+# raise StopIteration if this reader has a next state
+
 module Stone
   class LineNumberReader
-    def initialize(file_name)
-      @file_name = file_name
-      @line_no = 0
+    def initialize(filename)
+      @filename = filename
     end
 
     def readline
-      line_class.new.tap do |line|
-        line.no = @line_no
-        line.body = next_line
-        @line_no += 1
-      end
+      line_class.new(line[0].strip, line[0])
+    end
+
+    def has_next_line?
+      !!peek
+    rescue StopIteration
+      false
     end
 
     private
 
-    def next_line
-      file.readline.strip
-    rescue EOFError
-      @file.close
-      raise EOFError            # specific error
+    def line
+      file.next
     end
 
-    # Line class has `Number of Line` and `Body`
+    def peek
+      file.peek
+    end
+
+    # Line class has `Body` and `Number of Line`
     def line_class
-      @line ||= Struct.new('Line', :no, :body)
+      @line ||= Struct.new('Line', :body, :no)
     end
 
     def file
-      @file ||= File.new(@file_name)
+      @file ||= File.new(@filename).each_line.with_index
     end
   end
 end

@@ -9,13 +9,17 @@ module Stone
     end
 
     def call
-      lexer = Stone::Lexer.new(reader)
-      while (token = lexer.read_token) != Token::EOF
+      # pp ExprPaser.new(lexer).expression
+      lexer.each_token do |token|
         p token
       end
     end
 
     private
+
+    def lexer
+      @lexer ||= Stone::Lexer.new(reader)
+    end
 
     def reader
       @reader ||= LineNumberReader.new(@file_name)
