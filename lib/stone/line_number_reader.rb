@@ -22,10 +22,6 @@ module Stone
       raise EOFError            # specific error
     end
 
-    def has_cache?
-      !!@cache
-    end
-
     # Line class has `Number of Line` and `Body`
     def line_class
       @line ||= Struct.new('Line', :no, :body)
