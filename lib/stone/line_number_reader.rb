@@ -8,7 +8,9 @@ module Stone
     end
 
     def readline
-      line_class.new(line[0].strip, line[0])
+      line_class.new(*line).tap do |line|
+        line.body = line.body.strip
+      end
     end
 
     def has_next_line?
