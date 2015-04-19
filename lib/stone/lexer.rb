@@ -11,29 +11,23 @@ module Stone
     end
 
     def read_token
-      take_tokens
+      read_tokens
       token!
     end
 
     def peek_token(n)
-      take_tokens(n)
+      read_tokens(n)
       token(n)
     end
 
     def each_token
-      loop do
-        read_line
-        tokens.each do |token|
-          yield(token)
-        end
-        reset
-      end
+      loop { read_line }
+      tokens.each { |token| yield(token) }
     end
 
     private
 
-    def take_tokens(n = 0)
-      reset
+    def read_tokens(n = 0)
       (n + 1).times do
         break if has_tokens?(n)
         read_line
@@ -47,8 +41,9 @@ module Stone
     end
 
     def next_line_tokens
-      token_builder.build(line.no)
+      reset
 
+      token_builder.build(line.no)
       [].tap do |tokens|
         i = 0
         while i < line.body.length
@@ -69,6 +64,7 @@ module Stone
       tokens[i] || Token::EOF
     end
 
+    # has number of tokens?
     def has_tokens?(i = 0)
       tokens.size > i
     end
@@ -87,7 +83,6 @@ module Stone
 
     def reset
       @line = nil
-      @tokens = []
     end
   end
 end
