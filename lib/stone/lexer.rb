@@ -15,8 +15,8 @@ module Stone
       token!
     end
 
-    def peek_token(n)
-      read_tokens(n)
+    def peek_token(n = 0)
+      read_tokens(n = 0)
       token(n)
     end
 
