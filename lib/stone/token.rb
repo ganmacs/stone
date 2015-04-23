@@ -5,7 +5,7 @@ require 'stone/tokens/str'
 
 module Stone
   module Token
-    EOL = '\\n'
+    EOL = "\n"
     EOF = Base.new(-1)
   end
 end
