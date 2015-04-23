@@ -52,7 +52,7 @@ module Stone
             tokens << token_builder.call(m)
           end
         end
-        tokens << Stone::Token::Id.new(line.no, Token::EOL)
+        tokens << Token::Id.new(line.no, Token::EOL)
       end
     end
 
@@ -74,7 +74,7 @@ module Stone
     end
 
     def token_builder
-      @token_builder ||= Stone::TokenBuilder.new
+      @token_builder ||= TokenBuilder.new
     end
 
     def tokens
