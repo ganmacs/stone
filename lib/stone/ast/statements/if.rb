@@ -17,7 +17,7 @@ module Stone
         end
 
         def else_block
-          child(2) if has_else?
+          child(2) if has_else_block?
         end
 
         def to_s
@@ -29,7 +29,7 @@ module Stone
 
         private
 
-        def has_else_black?
+        def has_else_block?
           number_of_children > 2
         end
       end
