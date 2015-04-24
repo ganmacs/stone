@@ -3,6 +3,8 @@ require 'stone/ast/base'
 module Stone
   module AST
     class Leaf < Base
+      attr_reader :token
+
       def initialize(token)
         @token = token
       end
@@ -25,10 +27,6 @@ module Stone
 
       def location
         "at line #{@token.line_number}"
-      end
-
-      def token
-        @token
       end
     end
   end
