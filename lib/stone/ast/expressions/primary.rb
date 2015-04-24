@@ -8,9 +8,11 @@ module Stone
           super(tree)
         end
 
-        # if has a child, not create duplicate PrimaryExpr
-        def create(c)
-          c.size == 1 ? c[0] : PrimaryExpr.new(c)
+        # if has a only child, not create duplicate PrimaryExpr
+        class << self
+          def create(c)
+            c.size == 1 ? c[0] : PrimaryExpr.new(c)
+          end
         end
       end
     end
