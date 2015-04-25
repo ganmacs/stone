@@ -37,7 +37,7 @@ module Stone
           return if klass.nil?
           new.tap do |builder|
             builder.build_ast = lambda do |result|
-              if klass.new([]).respond_to?(:create)
+              if klass.respond_to?(:create)
                 klass.create(result)
               else
                 klass.new(result)
