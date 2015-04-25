@@ -1,9 +1,9 @@
-require 'stone/ast/list'
+require 'stone/asts/list'
 
 module Stone
   module AST
     module Statement
-      class Nil < List
+      class Block < List
         def initialize(children)
           super(children)
         end

@@ -2,16 +2,7 @@ require 'set'
 require 'stone/parser/combinator'
 require 'stone/parser/operators'
 require 'stone/token'
-
-require 'stone/ast/name'
-require 'stone/ast/expressions/primary'
-require 'stone/ast/expressions/negative'
-require 'stone/ast/statements/block'
-require 'stone/ast/statements/if'
-require 'stone/ast/statements/while'
-require 'stone/ast/expressions/binary'
-require 'stone/ast/literals/number'
-require 'stone/ast/literals/string'
+require 'stone/ast'
 
 module Stone
   class BasicParser

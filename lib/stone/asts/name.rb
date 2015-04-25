@@ -1,4 +1,4 @@
-require 'stone/ast/leaf'
+require 'stone/asts/leaf'
 
 module Stone
   module AST

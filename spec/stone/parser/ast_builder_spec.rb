@@ -1,5 +1,5 @@
 require 'stone/parser/ast_builder'
-require 'stone/ast/expressions/binary'
+require 'stone/ast'
 
 describe Stone::Parser::ASTBuilder do
   describe 'build' do

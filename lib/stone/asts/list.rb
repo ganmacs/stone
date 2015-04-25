@@ -1,4 +1,4 @@
-require 'stone/ast/base'
+require 'stone/asts/base'
 
 module Stone
   module AST
