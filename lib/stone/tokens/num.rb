@@ -7,7 +7,7 @@ module Stone
 
       def initialize(line, value)
         super(line)
-        @value = value
+        @value = Integer(value)
       end
 
       def num?
@@ -16,6 +16,10 @@ module Stone
 
       def text
         @value.to_s
+      end
+
+      def number
+        @value
       end
     end
   end
