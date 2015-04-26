@@ -8,7 +8,7 @@ module Stone
           super(children)
         end
 
-        def condtion
+        def condition
           child(0)
         end
 
@@ -21,7 +21,7 @@ module Stone
         end
 
         def to_s
-          "(if #{condtion} #{then_block}".tap do |s|
+          "(if #{condition} #{then_block}".tap do |s|
             s << "else #{else_block}" if has_else_block?
             s << ')'
           end
