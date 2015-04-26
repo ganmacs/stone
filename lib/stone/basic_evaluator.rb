@@ -62,9 +62,9 @@ module Stone
           if left.is_a?(Stone::AST::Name)
             env[left.name] = right
             right
+          else
+            raise "bad assingment #{self}"
           end
-        rescue
-          raise "bad assingment #{self}"
         end
 
         def compute_operand(left, op, right)
