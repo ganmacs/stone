@@ -3,4 +3,4 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'stone'
 require 'pp'
 
-pp Stone::Runner.new('examples/sample').call
+Stone::Runner.new('examples/sample1').call

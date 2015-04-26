@@ -97,10 +97,6 @@ describe Stone::Parser::Combinator do
       it 'return Combinator class' do
         expect(rule).to be_a Stone::Parser::Combinator
       end
-
-      # it 'has empty builder' do
-      #   expect(rule.builder).to be_nil
-      # end
     end
 
     context '#rule received AST inherited class' do
