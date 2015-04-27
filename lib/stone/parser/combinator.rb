@@ -81,6 +81,13 @@ module Stone
         self
       end
 
+      def maybe(parser)
+        # @FIXME dup is collect or not
+        p2 = Parser::Combinator.new(nil).reset
+        @elements << Element::OrTree.new(parser, p2)
+        self
+      end
+
       def repeat(parser)
         @elements << Element::Repeat.new(parser)
         self
@@ -88,6 +95,18 @@ module Stone
 
       def option(parser)
         @elements << Element::Repeat.new(parser, once: true)
+        self
+      end
+
+      def insert_choice(parser)
+        e = @elements.first
+        if e.is_a?(Element::OrTree)
+          e.insert(parser)
+        else
+          other = Combinator.new(self)
+          reset
+          self.or(other, parser)
+        end
         self
       end
     end

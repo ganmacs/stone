@@ -23,7 +23,7 @@ module Stone
         end
 
         def insert(parser)
-          @parser.push(parser)
+          @parsers.unshift(parser)
         end
       end
     end

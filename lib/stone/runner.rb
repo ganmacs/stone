@@ -1,9 +1,10 @@
 require 'stone/lexer'
 require 'stone/line_number_reader'
 require 'stone/token'
-require 'stone/basic_parser'
-require 'stone/basic_interpretor'
-require 'stone/envs/basic_env'
+
+require 'stone/func_interpretor'
+require 'stone/func_parser'
+require 'stone/envs/nested_env'
 
 module Stone
   class Runner
@@ -12,31 +13,21 @@ module Stone
     end
 
     def call
-      # pp ExprPaser.new(lexer).expression
-      # lexer.each_token do |token|
-      #   p token
-      # end
-
-      # while lexer.peek_token != Token::EOF
-      #   ast = basic_parser.parse(lexer)
-
-      #   p ast.to_s
-      # end
-      basic_interpretor.run(basic_parser, basic_env, lexer)
+      func_interpretor.run(func_parser, nested_env, lexer)
     end
 
     private
 
-    def basic_interpretor
-      @basic_interpretor ||= Stone::BasicInterpretor.new
+    def func_interpretor
+      @func_interpretor ||= Stone::FuncInterpretor.new
     end
 
-    def basic_env
-      @basi_env ||= Stone::Env::BasicEnv.new
+    def func_parser
+      @func_parser ||= Stone::FuncParser.new
     end
 
-    def basic_parser
-      @basic_parser ||= BasicParser.new
+    def nested_env
+      @nested_env ||= Stone::Env::NestedEnv.new
     end
 
     def lexer

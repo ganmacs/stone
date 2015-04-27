@@ -5,6 +5,7 @@ require 'stone/parser/precedence'
 require 'stone/parser/operators'
 require 'stone/ast'
 require 'stone/token'
+require 'set'
 
 describe Stone::Parser::Combinator do
   let(:reader) { Stone::LineNumberReader.new(file) }
@@ -52,6 +53,14 @@ describe Stone::Parser::Combinator do
         .sep('}')
     end
 
+    let(:param) { rule.identifier(Set.new) }
+    let(:params) { rule(Stone::AST::ParameterList).ast(param).repeat(rule.sep(',').ast(param)) }
+    let(:params_list) { rule.sep('(').maybe(params).sep(')') }
+
+    let(:defn) do
+      rule(Stone::AST::Statement::Defn).sep('defn').identifier(Set.new).ast(params_list).ast(block2)
+    end
+
     describe 'number' do
       let(:file) { 'spec/examples/primary' }
       it 'create ast of -10' do
@@ -87,7 +96,18 @@ describe Stone::Parser::Combinator do
       end
     end
 
-    describe 'expression' do
+    describe 'params_list' do
+      let(:file) { 'spec/examples/params_list' }
+      it 'create (a b c)' do
+        expect(params_list.parse(lexer).to_s).to eq '(a b c)'
+      end
+    end
+
+    describe 'defn' do
+      let(:file) { 'spec/examples/defn' }
+      it 'create defn ast' do
+        expect(defn.parse(lexer).to_s).to eq '(defn name (a) ("asdf"))'
+      end
     end
   end
 

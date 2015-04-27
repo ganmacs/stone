@@ -10,7 +10,16 @@ module Stone
       def [](name)
         values[name]
       end
-      alias_method :get, :[]=
+      alias_method :get, :[]
+
+      def where(name)
+      end
+
+      def update_new(name, value)
+      end
+
+      def outer_env=(env)
+      end
 
       private
 
