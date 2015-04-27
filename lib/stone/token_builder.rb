@@ -1,6 +1,4 @@
-require 'stone/tokens/id'
-require 'stone/tokens/num'
-require 'stone/tokens/str'
+require 'stone/token'
 
 module Stone
   class TokenBuilder
