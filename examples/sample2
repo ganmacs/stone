@@ -1,4 +1,9 @@
-defn fact (n) {
-  n + 1
+defn fact(n) {
+  f = 1
+  while n > 0 {
+    f = f * n
+    n = n - 1
+  }
+  f
 }
-fact(1)
+fact(10)

@@ -25,7 +25,8 @@ module Stone
       end
 
       def where(name)
-        values[name] || (@outer && @outer.where(name))
+        return self if values[name]
+        @outer && @outer.where(name)
       end
     end
   end
