@@ -8,7 +8,7 @@ module Stone
     end
 
     def readline
-      line_class.new(*line).tap do |line|
+      Line.new(*line).tap do |line|
         line.body = line.body.strip
       end
     end
@@ -29,13 +29,16 @@ module Stone
       file.peek
     end
 
-    # Line class has `Body` and `Number of Line`
-    def line_class
-      @line ||= Struct.new('Line', :body, :no)
-    end
-
     def file
       @file ||= File.new(@filename).each_line.with_index
+    end
+  end
+
+  class Line
+    attr_accessor :body, :no
+    def initialize(body, no)
+      @body = body
+      @no = no
     end
   end
 end

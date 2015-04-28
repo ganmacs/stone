@@ -1,5 +1,5 @@
-require 'stone/lexer'
-require 'stone/line_number_reader'
+require 'stone/lexer/lexer'
+require 'stone/lexer/line_number_reader'
 
 describe Stone::Lexer do
   let(:file) { 'spec/examples/while' }

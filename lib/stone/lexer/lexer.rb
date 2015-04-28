@@ -1,5 +1,4 @@
-require 'stone/token_builder'
-require 'stone/token'
+require 'stone/lexer/token_builder'
 
 module Stone
   class Lexer
