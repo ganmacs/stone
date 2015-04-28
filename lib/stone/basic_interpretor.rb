@@ -1,4 +1,4 @@
-require 'stone/basic_evaluator'
+require 'stone/evaluator'
 
 module Stone
   class BasicInterpretor
