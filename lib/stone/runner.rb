@@ -2,7 +2,7 @@ require 'stone/lexer/lexer'
 require 'stone/lexer/line_number_reader'
 require 'stone/token'
 
-require 'stone/closure_interpretor'
+require 'stone/interpretor'
 require 'stone/closure_parser'
 require 'stone/env'
 
@@ -19,7 +19,7 @@ module Stone
     private
 
     def interpretor
-      @interpretor ||= Stone::ClosureInterpretor.new
+      @interpretor ||= Stone::Interpretor.new
     end
 
     def parser

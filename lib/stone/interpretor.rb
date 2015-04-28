@@ -1,11 +1,11 @@
 require 'stone/evaluator'
 
 module Stone
-  class BasicInterpretor
-    def run(basic_parser, env, lexer)
+  class Interpretor
+    def run(parser, env, lexer)
       result = []
       while lexer.peek_token != Token::EOF
-        ast = basic_parser.parse(lexer)
+        ast = parser.parse(lexer)
         result.push(ast.eval(env))
       end
       result
