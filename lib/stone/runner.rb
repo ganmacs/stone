@@ -4,7 +4,7 @@ require 'stone/token'
 
 require 'stone/closure_interpretor'
 require 'stone/closure_parser'
-require 'stone/envs/nested_env'
+require 'stone/env'
 
 module Stone
   class Runner
@@ -27,7 +27,7 @@ module Stone
     end
 
     def env
-      @env ||= Stone::Env::NestedEnv.new
+      @env ||= Stone::Env.new
     end
 
     def lexer

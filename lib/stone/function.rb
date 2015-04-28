@@ -1,4 +1,4 @@
-require 'stone/envs/nested_env'
+require 'stone/env'
 
 # function object
 module Stone
@@ -12,7 +12,7 @@ module Stone
     end
 
     def make_env
-      Stone::Env::NestedEnv.new(@env)
+      Stone::Env.new(@env)
     end
 
     def to_s
