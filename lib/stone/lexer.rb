@@ -32,8 +32,7 @@ module Stone
         break if has_tokens?(n)
         read_line
       end
-    rescue StopIteration
-      nil                       # TODO
+    rescue StopIteration # rubocop:disable HandleExceptions
     end
 
     def read_line
