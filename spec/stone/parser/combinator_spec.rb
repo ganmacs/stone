@@ -104,9 +104,18 @@ describe Stone::Parser::Combinator do
     end
 
     describe 'defn' do
-      let(:file) { 'spec/examples/defn' }
-      it 'create defn ast' do
-        expect(defn.parse(lexer).to_s).to eq '(defn name (a) ("asdf"))'
+      context 'with args' do
+        let(:file) { 'spec/examples/defn' }
+        it 'create defn ast' do
+          expect(defn.parse(lexer).to_s).to eq '(defn name (a) ("asdf"))'
+        end
+      end
+
+      context 'without args' do
+        let(:file) { 'spec/examples/defn_without_args' }
+        it 'create ()' do
+          expect(defn.parse(lexer).to_s).to eq '(defn name () ("asdf"))'
+        end
       end
     end
   end

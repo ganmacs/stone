@@ -14,10 +14,9 @@ module Stone
 
       def initialize(klass)
         return reset if klass.nil?
-
-        if klass.new([]).respond_to?(:elements) # parser(combinator) 微妙
+        if klass.respond_to?(:elements) || klass.new([]).respond_to?(:elements)
           @elements = klass.elements
-          @builder = parser.builder
+          @builder = klass.builder
         else
           reset(klass)
         end
@@ -82,8 +81,7 @@ module Stone
       end
 
       def maybe(parser)
-        # @FIXME dup is collect or not
-        p2 = Parser::Combinator.new(nil).reset
+        p2 = Parser::Combinator.new(parser).reset(parser.builder.class)
         @elements << Element::OrTree.new(parser, p2)
         self
       end

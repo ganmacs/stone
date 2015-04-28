@@ -1,4 +1,5 @@
 require 'stone/asts/name'
+require 'stone/asts/fun'
 require 'stone/asts/arguments'
 require 'stone/asts/parameter_list'
 require 'stone/asts/expressions/primary'

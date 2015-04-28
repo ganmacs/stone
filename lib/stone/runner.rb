@@ -2,8 +2,8 @@ require 'stone/lexer'
 require 'stone/line_number_reader'
 require 'stone/token'
 
-require 'stone/func_interpretor'
-require 'stone/func_parser'
+require 'stone/closure_interpretor'
+require 'stone/closure_parser'
 require 'stone/envs/nested_env'
 
 module Stone
@@ -13,21 +13,21 @@ module Stone
     end
 
     def call
-      func_interpretor.run(func_parser, nested_env, lexer)
+      interpretor.run(parser, env, lexer)
     end
 
     private
 
-    def func_interpretor
-      @func_interpretor ||= Stone::FuncInterpretor.new
+    def interpretor
+      @interpretor ||= Stone::ClosureInterpretor.new
     end
 
-    def func_parser
-      @func_parser ||= Stone::FuncParser.new
+    def parser
+      @parser ||= Stone::ClosureParser.new
     end
 
-    def nested_env
-      @nested_env ||= Stone::Env::NestedEnv.new
+    def env
+      @env ||= Stone::Env::NestedEnv.new
     end
 
     def lexer

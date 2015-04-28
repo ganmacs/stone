@@ -1,0 +1,4 @@
+defn counter () {
+  1
+}
+counter()
