@@ -4,10 +4,6 @@ module Stone
   module AST
     module Expression
       class Binary < List
-        def initialize(children)
-          super(children)
-        end
-
         def left
           child(0)
         end

@@ -3,10 +3,6 @@ require 'stone/asts/list'
 module Stone
   module AST
     class Fun < List
-      def initialize(children)
-        super(children)
-      end
-
       def parameters
         child(0)
       end

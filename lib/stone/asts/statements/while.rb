@@ -4,10 +4,6 @@ module Stone
   module AST
     module Statement
       class While < List
-        def initialize(children)
-          super(children)
-        end
-
         def condition
           child(0)
         end

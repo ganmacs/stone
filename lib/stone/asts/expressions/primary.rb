@@ -4,10 +4,6 @@ module Stone
   module AST
     module Expression
       class Primary < List
-        def initialize(tree)
-          super(tree)
-        end
-
         def operand
           child(0)
         end

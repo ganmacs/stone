@@ -4,10 +4,6 @@ module Stone
   module AST
     module Statement
       class Defn < List
-        def initialize(children)
-          super(children)
-        end
-
         def name
           child(0).token.text
         end
