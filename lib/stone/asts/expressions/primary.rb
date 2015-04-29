@@ -5,11 +5,11 @@ module Stone
     module Expression
       class Primary < List
         def operand
-          child(0)
+          children[0]
         end
 
         def postfix(nest)
-          child(number_of_children - nest - 1)
+          children[number_of_children - nest - 1]
         end
 
         def has_postfix?(nest)

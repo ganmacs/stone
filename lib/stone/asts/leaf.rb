@@ -9,10 +9,6 @@ module Stone
         @token = token
       end
 
-      def child
-        nil
-      end
-
       def number_of_children
         0
       end

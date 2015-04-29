@@ -1,9 +1,9 @@
 module Stone
   module AST
     class Base
-      def child(i)
-        raise NotImplementedError
-      end
+      # def child(i)
+      #   raise NotImplementedError
+      # end
 
       def number_of_children
         raise NotImplementedError

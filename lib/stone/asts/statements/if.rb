@@ -5,15 +5,15 @@ module Stone
     module Statement
       class If < List
         def condition
-          child(0)
+          children[0]
         end
 
         def then_block
-          child(1)
+          children[1]
         end
 
         def else_block
-          child(2) if has_else_block?
+          children[2] if has_else_block?
         end
 
         def to_s

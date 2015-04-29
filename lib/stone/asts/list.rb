@@ -10,10 +10,6 @@ module Stone
         @children = children
       end
 
-      def child(i)
-        children[i]
-      end
-
       def number_of_children
         children.size
       end

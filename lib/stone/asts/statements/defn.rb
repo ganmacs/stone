@@ -5,15 +5,15 @@ module Stone
     module Statement
       class Defn < List
         def name
-          child(0).token.text
+          children[0].token.text
         end
 
         def prameters
-          child(1)
+          children[1]
         end
 
         def body
-          child(2)
+          children[2]
         end
 
         def to_s

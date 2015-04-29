@@ -4,11 +4,11 @@ module Stone
   module AST
     class Fun < List
       def parameters
-        child(0)
+        children[0]
       end
 
       def body
-        child(1)
+        children[1]
       end
 
       def to_s

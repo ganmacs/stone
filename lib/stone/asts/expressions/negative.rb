@@ -5,7 +5,7 @@ module Stone
     module Expression
       class Negative < List
         def operand
-          child(0)
+          children[0]
         end
 
         def to_s

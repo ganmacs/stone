@@ -5,15 +5,15 @@ module Stone
     module Expression
       class Binary < List
         def left
-          child(0)
+          children[0]
         end
 
         def right
-          child(2)
+          children[2]
         end
 
         def operator
-          child(1).token.text
+          children[1].token.text
         end
       end
     end
