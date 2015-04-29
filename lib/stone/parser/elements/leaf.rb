@@ -9,17 +9,17 @@ module Stone
         end
 
         # @result - [AST::Tree] parsed tree
-        def parse(lexer, results)
+        def parse(lexer)
           token = lexer.read_token
           if token.id?
             token_str = @tokens.find { |t| t == token.text }
-            raise " parse excetpion #{token}" if token_str.nil?
-            return find(results, token)
+            raise "parse exception #{token}" if token_str.nil?
+            find(token)
           end
         end
 
-        def find(results, token)
-          results << Stone::AST::Leaf.new(token)
+        def find(token)
+          Stone::AST::Leaf.new(token)
         end
 
         def match?(lexer)

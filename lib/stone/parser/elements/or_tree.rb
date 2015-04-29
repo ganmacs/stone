@@ -8,10 +8,10 @@ module Stone
           @parsers = parsers
         end
 
-        def parse(lexer, reserved)
+        def parse(lexer)
           parser = choose(lexer)
           raise 'ParseError' if parser.nil?
-          reserved << parser.parse(lexer)
+          parser.parse(lexer)
         end
 
         def match?(lexer)
@@ -19,7 +19,7 @@ module Stone
         end
 
         def choose(lexer)
-          @parsers.find { |parser| parser.match?(lexer) }
+          @parsers.find { |p| p.match?(lexer) }
         end
 
         def insert(parser)

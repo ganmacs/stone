@@ -23,10 +23,7 @@ module Stone
       end
 
       def parse(lexer)
-        results = []
-        @elements.each do |elem|
-          elem.parse(lexer, results) # @TODO return result value
-        end
+        results = @elements.flat_map { |e| e.parse(lexer) }.compact
         @builder.build(results)
       end
 

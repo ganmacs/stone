@@ -8,7 +8,7 @@ module Stone
           super(token)
         end
 
-        def find(_res, _token)
+        def find(_token)
         end
       end
     end

@@ -9,8 +9,8 @@ module Stone
         end
 
         # @results [ASTree]
-        def parse(lexer, results)
-          results << @parser.parse(lexer)
+        def parse(lexer)
+          @parser.parse(lexer)
         end
 
         def match?(lexer)

@@ -10,12 +10,9 @@ module Stone
           @factory = ASTBuilder.get(type)
         end
 
-        def parse(lexer, result)
+        def parse(lexer)
           token = lexer.read_token
-          if test(token)
-            leaf = @factory.build(token)
-            result << leaf      # ast::leaf
-          end
+          @factory.build(token) if test(token)
         end
 
         def match?(lexer)

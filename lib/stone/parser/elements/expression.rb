@@ -11,12 +11,12 @@ module Stone
           @factor = exp
         end
 
-        def parse(lexer, result)
+        def parse(lexer)
           right = @factor.parse(lexer)
           while prec = next_opertor(lexer)
             right = shift(lexer, right, prec.value)
           end
-          result << right
+          right
         end
 
         def match?(lexer)
