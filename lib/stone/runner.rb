@@ -1,10 +1,5 @@
-require 'stone/lexer/lexer'
-require 'stone/lexer/line_number_reader'
-require 'stone/token'
-
 require 'stone/interpretor'
 require 'stone/func_parser'
-require 'stone/env'
 
 module Stone
   class Runner
@@ -13,13 +8,13 @@ module Stone
     end
 
     def call
-      interpretor.run(parser, env, lexer)
+      interpretor.run(parser, env)
     end
 
     private
 
     def interpretor
-      @interpretor ||= Stone::Interpretor.new
+      @interpretor ||= Stone::Interpretor.new(@file_name)
     end
 
     def parser
@@ -28,14 +23,6 @@ module Stone
 
     def env
       @env ||= Stone::Env.new
-    end
-
-    def lexer
-      @lexer ||= Stone::Lexer.new(reader)
-    end
-
-    def reader
-      @reader ||= LineNumberReader.new(@file_name)
     end
   end
 end
