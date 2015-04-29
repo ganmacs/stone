@@ -18,7 +18,10 @@ module Stone
       private
 
       def build_by_klass(result)
-        @klass.new(result) unless @klass.nil?
+        unless @klass.nil?
+          method = @klass.respond_to?(:create) ? 'create' : 'new'
+          @klass.send(method, result)
+        end
       rescue ArgumentError
         nil
       end

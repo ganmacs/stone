@@ -17,10 +17,11 @@ module Stone
         end
 
         class << self
-          # override initializer
           # if has a only child, not create duplicate PrimaryExpr
-          def new(c)
-            c.size == 1 ? c[0] : super(c)
+          def create(c)
+            c.size == 1 ? c[0] : Primary.new(c)
+          end
+        end
           end
         end
       end
