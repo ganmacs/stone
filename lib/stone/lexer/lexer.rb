@@ -40,18 +40,17 @@ module Stone
 
     def next_line_tokens
       reset
-
       token_builder.build(line.no)
-      [].tap do |tokens|
-        i = 0
-        while i < line.body.length
-          TOKEN.match(line.body, i) do |m|
-            i += m[0].size
-            tokens << token_builder.call(m)
-          end
+
+      tokens = []
+      i = 0
+      while i < line.body.length
+        TOKEN.match(line.body, i) do |m|
+          i += m[0].size
+          tokens << token_builder.call(m)
         end
-        tokens << Token::Id.new(line.no, Token::EOL)
       end
+      tokens << Token::Id.new(line.no, Token::EOL)
     end
 
     def token!
