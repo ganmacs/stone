@@ -9,7 +9,7 @@ module Stone
         end
 
         def value
-          token.number
+          token.num
         end
       end
     end

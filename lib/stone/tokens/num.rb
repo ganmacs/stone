@@ -18,7 +18,7 @@ module Stone
         @value.to_s
       end
 
-      def number
+      def num
         @value
       end
     end
