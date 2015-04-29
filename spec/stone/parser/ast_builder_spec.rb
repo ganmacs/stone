@@ -4,9 +4,9 @@ require 'stone/ast'
 describe Stone::Parser::ASTBuilder do
   describe 'build' do
     context 'received AST inherited class' do
-      let(:builder) { described_class.ast_list(Stone::AST::Expression::Binary) }
+      let(:builder) { described_class.build(Stone::AST::Expression::Binary) }
       it 'return recieved class instance' do
-        expect(builder.build([])).to be_a Stone::AST::Expression::Binary
+        expect(builder.call([])).to be_a Stone::AST::Expression::Binary
       end
     end
   end

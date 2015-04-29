@@ -24,7 +24,7 @@ module Stone
 
       def parse(lexer)
         results = @elements.flat_map { |e| e.parse(lexer) }.compact
-        @builder.build(results)
+        @builder.call(results)
       end
 
       def match?(lexer)
@@ -37,7 +37,7 @@ module Stone
 
       def reset(klass = nil)
         @elements = []
-        @builder = ASTBuilder.ast_list(klass)
+        @builder = ASTBuilder.build(klass)
         self
       end
 

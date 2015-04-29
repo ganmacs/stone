@@ -6,7 +6,7 @@ module Stone
       class Expression < Base
         # @exp Parser class
         def initialize(klass, exp, ops)
-          @builder = ASTBuilder.ast_list(klass)
+          @builder = ASTBuilder.build(klass)
           @operators = ops
           @factor = exp
         end
@@ -31,7 +31,7 @@ module Stone
             right = shift(lexer, right, next_prec.value)
           end
           list << right
-          @builder.build(list)
+          @builder.call(list)
         end
 
         def next_opertor(lexer)

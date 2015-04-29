@@ -16,10 +16,11 @@ module Stone
           number_of_children - nest > 1
         end
 
-        # if has a only child, not create duplicate PrimaryExpr
         class << self
-          def create(c)
-            c.size == 1 ? c[0] : Primary.new(c)
+          # override initializer
+          # if has a only child, not create duplicate PrimaryExpr
+          def new(c)
+            c.size == 1 ? c[0] : super(c)
           end
         end
       end

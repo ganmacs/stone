@@ -7,12 +7,12 @@ module Stone
       class Token < Base
         def initialize(type)
           type ||= Stone::AST::Leaf
-          @factory = ASTBuilder.get(type)
+          @builder = ASTBuilder.build(type)
         end
 
         def parse(lexer)
           token = lexer.read_token
-          @factory.build(token) if test(token)
+          @builder.call(token) if test(token)
         end
 
         def match?(lexer)
