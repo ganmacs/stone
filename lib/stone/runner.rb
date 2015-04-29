@@ -3,7 +3,7 @@ require 'stone/lexer/line_number_reader'
 require 'stone/token'
 
 require 'stone/interpretor'
-require 'stone/closure_parser'
+require 'stone/func_parser'
 require 'stone/env'
 
 module Stone
@@ -23,7 +23,7 @@ module Stone
     end
 
     def parser
-      @parser ||= Stone::ClosureParser.new
+      @parser ||= Stone::FuncParser.new
     end
 
     def env

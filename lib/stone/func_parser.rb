@@ -9,6 +9,7 @@ module Stone
       primary.repeat(postfix)
       simple.option(args)
       program.insert_choice(defn)
+      primary.insert_choice(closure)
     end
 
     def param
@@ -36,6 +37,11 @@ module Stone
 
     def postfix
       @postfix ||= rule.sep('(').maybe(args).sep(')')
+    end
+
+    # <closure> ::= "fun" <param_list> <block>
+    def closure
+      @closure ||= rule(Stone::AST::Fun).sep('fun').ast(param_list).ast(block)
     end
   end
 end
