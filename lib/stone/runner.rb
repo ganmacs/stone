@@ -1,5 +1,5 @@
 require 'stone/interpretor'
-require 'stone/func_parser'
+require 'stone/basic_parser'
 
 module Stone
   class Runner
@@ -18,7 +18,7 @@ module Stone
     end
 
     def parser
-      @parser ||= Stone::FuncParser.new
+      @parser ||= Stone::BasicParser.new
     end
 
     def env

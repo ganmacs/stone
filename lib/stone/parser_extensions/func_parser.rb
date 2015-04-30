@@ -1,8 +1,7 @@
-require 'stone/basic_parser'
 require 'stone/ast'
 
 module Stone
-  class FuncParser < BasicParser
+  module FuncParser
     def initialize
       super
       reserved.add(')')
