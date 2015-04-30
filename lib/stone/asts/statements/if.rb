@@ -23,6 +23,19 @@ module Stone
           end
         end
 
+        def eval(env)
+          cond = condition.eval(env)
+          if cond.is_a?(Fixnum) && cond != FALSE
+            then_block.eval(env)
+          else
+            if has_else_block?
+              else_block.elva(env)
+            else
+              0
+            end
+          end
+        end
+
         private
 
         def has_else_block?

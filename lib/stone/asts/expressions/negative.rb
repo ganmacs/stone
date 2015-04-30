@@ -11,6 +11,12 @@ module Stone
         def to_s
           "- #{operand}"
         end
+
+        def eval(env)
+          -1 * Integer(operand.eval(env))
+        rescue
+          raise "Bad Type For - #{self}"
+        end
       end
     end
   end

@@ -1,4 +1,4 @@
-require 'stone/evaluator'
+require 'stone/ast'
 require 'stone/token'
 
 describe Stone do

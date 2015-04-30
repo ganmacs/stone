@@ -19,6 +19,11 @@ module Stone
         def to_s
           "(defn #{name} #{prameters} #{body})"
         end
+
+        def eval(env)
+          env[name] = Stone::Function.new(prameters, body, env)
+          name
+        end
       end
     end
   end

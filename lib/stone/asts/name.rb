@@ -6,6 +6,10 @@ module Stone
       def name
         token.text
       end
+
+      def eval(env)
+        env[name] or raise "Undefined Name: #{self}"
+      end
     end
   end
 end

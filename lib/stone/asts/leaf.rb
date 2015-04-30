@@ -24,6 +24,10 @@ module Stone
       def location
         "at line #{@token.line_number}"
       end
+
+      def eval
+        raise NotImplementedError "Leaf #{self}"
+      end
     end
   end
 end

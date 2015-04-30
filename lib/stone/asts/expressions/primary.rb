@@ -12,8 +12,8 @@ module Stone
           children[number_of_children - nest - 1]
         end
 
-        def has_postfix?(nest)
-          number_of_children - nest > 1
+        def eval(env)
+          eval_sub_expression(env, 0)
         end
 
         class << self
@@ -22,6 +22,19 @@ module Stone
             c.size == 1 ? c[0] : Primary.new(c)
           end
         end
+
+        private
+
+        def has_postfix?(nest)
+          number_of_children - nest > 1
+        end
+
+        def eval_sub_expression(env, nest)
+          if has_postfix?(nest)
+            target = eval_sub_expression(env, nest + 1) # target = function?
+            postfix(nest).eval(env, target)
+          else
+            operand.eval(env)
           end
         end
       end

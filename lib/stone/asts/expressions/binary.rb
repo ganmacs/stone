@@ -15,6 +15,66 @@ module Stone
         def operator
           children[1].token.text
         end
+
+        def eval(env)
+          if operator == '='
+            evaled_right = right.eval(env)
+            compute_assign(env, evaled_right)
+          else
+            evaled_left = left.eval(env)
+            evaled_right = right.eval(env)
+            compute_operand(evaled_left, operator, evaled_right)
+          end
+        end
+
+        private
+
+        def compute_assign(env, right)
+          if left.is_a?(Stone::AST::Name)
+            env[left.name] = right
+            right
+          else
+            raise "bad assingment #{self}"
+          end
+        end
+
+        def compute_operand(left, op, right)
+          if left.is_a?(Fixnum) && right.is_a?(Fixnum)
+            compute_number(left, op, right)
+          else
+            case op
+            when '+'
+              String(left) + String(right)
+            when '=='
+              compute_equal(left, right)
+            else
+              raise "bad type #{self}"
+            end
+          end
+        end
+
+        def compute_number(left, op, right)
+          case op
+          when '+' then left + right
+          when '-' then left - right
+          when '*' then left * right
+          when '/' then left / right
+          when '%' then left % right
+          when '>' then left > right ? TRUE : FALSE
+          when '<' then left < right ? TRUE : FALSE
+          when '==' then left == right ? TRUE : FALSE
+          else
+            raise "bad operator #{self}"
+          end
+        end
+
+        def compute_equal(left, right)
+          if left.nil?
+            right.nil? ? TRUE : FALSE
+          else
+            left == right ? TRUE : FALSE
+          end
+        end
       end
     end
   end

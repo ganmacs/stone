@@ -14,6 +14,10 @@ module Stone
       def to_s
         "(fun #{parameters} #{body})"
       end
+
+      def eval(env)
+        Function.new(parameters, body, env)
+      end
     end
   end
 end

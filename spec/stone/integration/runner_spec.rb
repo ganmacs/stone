@@ -15,11 +15,11 @@ describe Stone::Runner do
 
   describe 'sample3' do
     let(:file) { 'spec/examples/integration/sample3' }
-    it { expect(runner).to eq ['fact', 3628800] }
+    it { expect(runner).to eq ['fact', 36_288_00] }
   end
 
   describe 'sample4' do
     let(:file) { 'spec/examples/integration/sample4' }
-    it { expect(runner).to eq ['counter', 'func', 1, 2] }
+    it { expect(runner).to eq ['counter', 1] }
   end
 end

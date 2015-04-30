@@ -7,6 +7,10 @@ module Stone
         def value
           token.text
         end
+
+        def eval(_)
+          value
+        end
       end
     end
   end

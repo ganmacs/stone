@@ -1,4 +1,3 @@
-require 'stone/evaluator'
 require 'stone/lexer/lexer'
 require 'stone/lexer/line_number_reader'
 

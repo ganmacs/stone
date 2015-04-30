@@ -1,4 +1,5 @@
 require 'stone/asts/base'
+require 'stone/function'
 
 module Stone
   module AST
@@ -20,6 +21,10 @@ module Stone
 
       def location
         children.map(&:location).find(&:itself)
+      end
+
+      def eval
+        raise NotImplementedError "List #{self}"
       end
     end
   end

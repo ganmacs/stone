@@ -8,6 +8,10 @@ module Stone
       end
 
       alias_method :size, :number_of_children
+
+      def eval(env, i, value)
+        env.update_new(name(i), value)
+      end
     end
   end
 end
