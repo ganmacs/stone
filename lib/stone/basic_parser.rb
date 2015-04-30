@@ -37,7 +37,7 @@ module Stone
 
     def primary
       @primary ||= rule(Stone::AST::Expression::Primary).or(rule.sep('(').ast(expr0).sep(')'),
-                                                            rule.number(Stone::AST::Literal::Number), # numberにnumber_token渡すなこれ微妙では
+                                                            rule.number(Stone::AST::Literal::Number),
                                                             rule.identifier(reserved, Stone::AST::Name),
                                                             rule.string(Stone::AST::Literal::String))
     end

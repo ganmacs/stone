@@ -1,0 +1,6 @@
+defn counter (c) {
+  fun () { c = c + 1 }
+}
+c = counter(1)
+c()
+c()
