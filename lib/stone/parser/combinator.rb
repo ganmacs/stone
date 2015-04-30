@@ -37,7 +37,7 @@ module Stone
 
       def reset(klass = nil)
         @elements = []
-        @builder = ASTBuilder.build(klass)
+        @builder ||= ASTBuilder.build(klass)
         self
       end
 
@@ -78,7 +78,7 @@ module Stone
       end
 
       def maybe(parser)
-        p2 = Parser::Combinator.new(parser).reset(parser.builder.class)
+        p2 = Parser::Combinator.new(parser).reset
         @elements << Element::OrTree.new(parser, p2)
         self
       end
