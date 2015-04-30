@@ -1,5 +1,6 @@
 require 'set'
 require 'stone/parser_extensions/func_parser'
+require 'stone/parser_extensions/class_parser'
 require 'stone/parser/combinator'
 require 'stone/parser/operators'
 require 'stone/token'
@@ -10,6 +11,7 @@ module Stone
     include Parser
     include Parser::Helper
     prepend FuncParser
+    prepend ClassParser
 
     REVERVED = [';', '}', Token::EOL].freeze
     OPERATORS = [['=',  1, Operators::RIGHT],
