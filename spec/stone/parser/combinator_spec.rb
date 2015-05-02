@@ -78,21 +78,21 @@ describe Stone::Parser::Combinator do
     describe 'block' do
       let(:file) { 'spec/examples/block' }
       it 'create ast of { "asdf" }' do
-        expect(block.parse(lexer).to_s).to eq '("asdf")'
+        expect(block.parse(lexer).to_s).to eq '(asdf)'
       end
     end
 
     describe 'block2' do
       let(:file) { 'spec/examples/block2' }
       it 'create ast of { "asdf" }' do
-        expect(block2.parse(lexer).to_s).to eq '("asdf")'
+        expect(block2.parse(lexer).to_s).to eq '(asdf)'
       end
     end
 
     describe 'if' do
       let(:file) { 'spec/examples/if' }
-      it 'create ast of (if 10 ("asdf"))' do
-        expect(if_state.parse(lexer).to_s).to eq '(if 10 ("asdf"))'
+      it 'create ast of (if 10 (asdf))' do
+        expect(if_state.parse(lexer).to_s).to eq '(if 10 (asdf))'
       end
     end
 
@@ -107,7 +107,7 @@ describe Stone::Parser::Combinator do
       context 'with args' do
         let(:file) { 'spec/examples/defn' }
         it 'create defn ast' do
-          expect(defn.parse(lexer).to_s).to eq '(defn name (a) ("asdf"))'
+          expect(defn.parse(lexer).to_s).to eq '(defn name (a) (asdf))'
         end
       end
     end
