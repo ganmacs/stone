@@ -31,4 +31,13 @@ describe Stone::Runner do
     end
     it { expect(result).to eq ['counter', 2, 3] }
   end
+
+  describe 'class' do
+    let(:file) { 'spec/examples/integration/sample6' }
+    let(:result) do
+      r = runner
+      [r[0], *r.drop(2)] # result[1] is closure object
+    end
+    it { expect(result).to eq ['Position', 4, 10, 10, 4] }
+  end
 end

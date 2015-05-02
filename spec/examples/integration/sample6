@@ -1,0 +1,13 @@
+class Position {
+  x = 0
+  y = 0
+  defn move(nx, ny) {
+    x = nx;
+    y = ny;
+  }
+}
+p = Position.new
+p.move(3, 4)
+p.x = 10
+p.x
+p.y

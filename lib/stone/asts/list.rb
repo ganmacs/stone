@@ -23,7 +23,7 @@ module Stone
         children.map(&:location).find(&:itself)
       end
 
-      def eval
+      def eval(_env)
         raise NotImplementedError "List #{self}"
       end
     end

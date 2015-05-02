@@ -10,7 +10,7 @@ module Stone
     end
 
     def instance_fun
-      rule(Dot.class(Stone::AST::Dot).sep('.').identifier(reserved))
+      rule(Stone::AST::Dot).sep('.').identifier(reserved)
     end
 
     # <member> ::= <defn> | <simple>
@@ -22,7 +22,7 @@ module Stone
     def class_body
       @class_body ||= rule(Stone::AST::ClassBody).sep('{')
                     .option(member)
-                    .repeat(rule.sep(';', Token.EOL).option(member))
+                    .repeat(rule.sep(';', Token::EOL).option(member))
                     .sep('}')
     end
 

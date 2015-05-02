@@ -30,12 +30,27 @@ module Stone
         private
 
         def compute_assign(env, right)
+          if left.is_a?(Stone::AST::Expression::Primary)
+            if left.has_postfix?(0) && left.postfix(0).is_a?(Stone::AST::Dot)
+              ret = left.eval_sub_expression(env, 1)
+              return set_field(ret, left.postfix(0), right) if ret.is_a?(Stone::StoneObject)
+            end
+          end
+
           if left.is_a?(Stone::AST::Name)
             env[left.name] = right
             right
           else
             raise "bad assingment #{self}"
           end
+        end
+
+        def set_field(obj, expression, value)
+          name = expression.name
+          obj.write(name, value)
+          value
+        rescue NameError
+          raise "Bad member access #{location} : #{name}"
         end
 
         def compute_operand(left, op, right)

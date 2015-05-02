@@ -1,3 +1,5 @@
+require 'stone/class_info'
+
 module Stone
   module AST
     module Statement
@@ -16,6 +18,12 @@ module Stone
 
         def to_s
           "(class #{name} #{super_class || '*'} #{body})"
+        end
+
+        def eval(env)
+          ci = ClassInfo.new(self, env)
+          env[name] = ci
+          name
         end
 
         private

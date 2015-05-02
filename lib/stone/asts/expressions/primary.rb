@@ -23,8 +23,6 @@ module Stone
           end
         end
 
-        private
-
         def has_postfix?(nest)
           number_of_children - nest > 1
         end
