@@ -1,9 +1,14 @@
 require 'stone/asts/list'
+require 'stone/evaluator_extensions/class_evaluator.rb'
+require 'stone/evaluator_extensions/array_evaluator.rb'
 
 module Stone
   module AST
     module Expression
       class Binary < List
+        prepend ClassEvaluator
+        prepend ArrayEvaluator
+
         def left
           children[0]
         end
@@ -30,16 +35,9 @@ module Stone
         private
 
         def compute_assign(env, right)
-          if left.is_a?(Stone::AST::Expression::Primary)
-            if left.has_postfix?(0) && left.postfix(0).is_a?(Stone::AST::Dot)
-              ret = left.eval_sub_expression(env, 1)
-              return set_field(ret, left.postfix(0), right) if ret.is_a?(Stone::StoneObject)
-            end
-          end
-
           if left.is_a?(Stone::AST::Name)
             env[left.name] = right
-            right
+            right.is_a?(Fixnum) ? right : right.dup
           else
             raise "bad assingment #{self}"
           end

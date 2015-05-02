@@ -40,4 +40,9 @@ describe Stone::Runner do
     end
     it { expect(result).to eq ['Position', 4, 10, 10, 4] }
   end
+
+  describe 'ary' do
+    let(:file) { 'spec/examples/integration/sample7' }
+    it { expect(runner).to eq [[2, 3, 4], 3, 'three', 'three', 'three one'] }
+  end
 end

@@ -19,7 +19,7 @@ module Stone
       private
 
       def to_literal(str)
-        str
+        str.gsub(/\"/, '')
       end
     end
   end
