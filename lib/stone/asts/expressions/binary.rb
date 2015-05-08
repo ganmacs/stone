@@ -1,6 +1,6 @@
 require 'stone/asts/list'
-require 'stone/evaluator_extensions/class_evaluator.rb'
-require 'stone/evaluator_extensions/array_evaluator.rb'
+require 'stone/evaluator_extensions/class_evaluator'
+require 'stone/evaluator_extensions/array_evaluator'
 
 module Stone
   module AST

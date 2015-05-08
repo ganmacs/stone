@@ -45,4 +45,14 @@ describe Stone::Runner do
     let(:file) { 'spec/examples/integration/sample7' }
     it { expect(runner).to eq [[2, 3, 4], 3, 'three', 'three', 'three one'] }
   end
+
+  describe 'native add fun' do
+    let(:file) { 'spec/examples/integration/sample8' }
+    it { expect(runner).to eq [2, 1, 3] }
+  end
+
+  describe 'native add let' do
+    let(:file) { 'spec/examples/integration/sample9' }
+    it { expect(runner).to eq [nil, 1] }
+  end
 end

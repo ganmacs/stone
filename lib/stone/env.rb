@@ -1,3 +1,5 @@
+require 'stone/native'
+
 module Stone
   class Env
     def initialize(env = nil)
@@ -30,6 +32,13 @@ module Stone
       else
         has_outer? ? @outer.find_env(name) : self
       end
+    end
+
+    def extend(*envs)
+      envs.each do |e|
+        values.update(e)
+      end
+      self
     end
 
     private

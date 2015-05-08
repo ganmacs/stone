@@ -22,7 +22,7 @@ module Stone
     end
 
     def env
-      @env ||= Stone::Env.new
+      @env ||= Stone::Env.new.extend(Native.environment)
     end
   end
 end

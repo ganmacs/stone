@@ -2,7 +2,7 @@ require 'stone/lexer/token_builder'
 
 module Stone
   class Lexer
-    TOKEN = %r{\s*((//.*)|([0-9]+)|("(\"|\\\\|\n|[^\"])*")|[A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\|\||=|[=`~$^+|<>[:punct:]])?}
+    TOKEN = %r{\s*((//.*)|([0-9]+)|("(\\\"|\\\\|\n|[^\"])*")|[A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\|\||=|[=`~$^+|<>[:punct:]])?}
 
     # @reader LineNumberReader instance
     def initialize(reader)
