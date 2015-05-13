@@ -1,10 +1,10 @@
 require 'stone/asts/postfix'
-require 'stone/evaluator_extensions/native_evaluator'
+# require 'stone/evaluator_extensions/native_evaluator'
 
 module Stone
   module AST
     class Arguments < Postfix
-      prepend NativeEvaluator
+      # prepend NativeEvaluator
       alias_method :size, :number_of_children
 
       def eval(caller_env, function)

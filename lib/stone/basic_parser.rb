@@ -2,6 +2,7 @@ require 'set'
 require 'stone/parser_extensions/func_parser'
 require 'stone/parser_extensions/class_parser'
 require 'stone/parser_extensions/array_parser'
+require 'stone/parser_extensions/native_parser'
 require 'stone/parser/combinator'
 require 'stone/parser/operators'
 require 'stone/token'
@@ -14,6 +15,7 @@ module Stone
     prepend FuncParser
     prepend ClassParser
     prepend ArrayParser
+    prepend NativeParser
 
     REVERVED = [';', '}', Token::EOL].freeze
     OPERATORS = [['=',  1, Operators::RIGHT],
@@ -33,6 +35,10 @@ module Stone
 
     def parse(lexer)
       program.parse(lexer)
+    end
+
+    def operator=(name, pre)
+      operators.add(name, pre, Operators::LEFT)
     end
 
     private

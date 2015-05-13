@@ -1,6 +1,7 @@
 require 'stone/asts/name'
 require 'stone/asts/fun'
 require 'stone/asts/dot'
+require 'stone/asts/let'
 require 'stone/asts/arguments'
 require 'stone/asts/parameter_list'
 require 'stone/asts/class_body'

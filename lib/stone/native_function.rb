@@ -6,9 +6,13 @@ module Stone
       @body = body
     end
 
-    def call(args, env = nil)
+    def call(args, env = nil, prec = nil)
       if @name == '_let'
-        @body.call(*args, env)
+        if prec.nil?
+          @body.call(*args, env)
+        else
+          @body.call(*args, env)
+        end
       else
         @body.call(*args)
       end

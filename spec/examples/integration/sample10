@@ -1,0 +1,13 @@
+let([x, "^", y], { x ** y }, 10)
+
+[x, "^", y] {
+}
+
+priority a < b;
+
+hat:
+int _ "*" _ (int[a] x, int[b] y) {
+  return hat(x, y);
+}
+
+2 * 2 ^ f(3)
