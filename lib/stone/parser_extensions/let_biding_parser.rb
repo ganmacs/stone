@@ -1,7 +1,7 @@
 require 'stone/ast'
 
 module Stone
-  module NativeParser
+  module LetBindingParser
     def initialize
       super
       program.insert_choice(let)

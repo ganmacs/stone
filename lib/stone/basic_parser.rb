@@ -2,7 +2,7 @@ require 'set'
 require 'stone/parser_extensions/func_parser'
 require 'stone/parser_extensions/class_parser'
 require 'stone/parser_extensions/array_parser'
-require 'stone/parser_extensions/native_parser'
+require 'stone/parser_extensions/let_biding_parser'
 require 'stone/parser/combinator'
 require 'stone/parser/operators'
 require 'stone/token'
@@ -15,7 +15,7 @@ module Stone
     prepend FuncParser
     prepend ClassParser
     prepend ArrayParser
-    prepend NativeParser
+    prepend LetBindingParser
 
     REVERVED = [';', '}', Token::EOL].freeze
     OPERATORS = [['=',  1, Operators::RIGHT],

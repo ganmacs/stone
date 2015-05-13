@@ -1,3 +1,2 @@
-b = 2
-a = 1
-add(b, a)
+let(inc, fun (c) { c + 1 })
+inc(3)

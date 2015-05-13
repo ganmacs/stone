@@ -1,2 +1,0 @@
-let(inc, fun (c) { c + 1 })
-inc(3)
