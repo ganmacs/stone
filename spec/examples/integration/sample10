@@ -1,4 +1,4 @@
-let_op([x, "ad", y], {
+let_op([x, "^", y], {
  ret = 1
  while (0 < y) {
    ret = x * ret
@@ -6,4 +6,4 @@ let_op([x, "ad", y], {
  }
  ret
 })
-ad(2, 5)
+2 ^ 5

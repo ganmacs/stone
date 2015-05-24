@@ -37,7 +37,7 @@ module Stone
       program.parse(lexer)
     end
 
-    def operator=(name, pre)
+    def add_operator(name, pre)
       operators.add(name, pre, Operators::LEFT)
     end
 

@@ -12,11 +12,25 @@ module Stone
       while lexer.peek_token != Token::EOF
         ast = parser.parse(lexer)
         result.push(ast.eval(env))
+
+        next unless !env['let_op'].nil?
+        env['let_op'].reject { |k, _| in?(k) }.each do |k, _|
+          added_op << k
+          parser.add_operator(k, 2)
+        end
       end
       result
     end
 
     private
+
+    def in?(key)
+      added_op.include?(key)
+    end
+
+    def added_op
+      @added_op ||= []
+    end
 
     def lexer
       @lexer ||= Stone::Lexer.new(reader)
