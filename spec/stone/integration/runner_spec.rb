@@ -50,4 +50,9 @@ describe Stone::Runner do
     let(:file) { 'spec/examples/integration/sample8' }
     it { expect(runner).to eq [nil, 4] }
   end
+
+  describe 'let op' do
+    let(:file) { 'spec/examples/integration/sample10' }
+    it { expect(runner).to eq [nil, 32] }
+  end
 end

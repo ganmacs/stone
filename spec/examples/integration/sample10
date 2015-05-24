@@ -1,0 +1,9 @@
+let_op([x, "ad", y], {
+ ret = 1
+ while (0 < y) {
+   ret = x * ret
+   y = y - 1
+ }
+ ret
+})
+ad(2, 5)

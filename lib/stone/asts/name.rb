@@ -8,7 +8,13 @@ module Stone
       end
 
       def eval(env)
-        env[name] or raise "Undefined Name: #{self}"
+        if env['let_op'].nil?
+          env[name]
+        elsif env['let_op'][name]
+          env['let_op'][name]
+        else
+          env[name]
+        end or raise "Undefined Name: #{self}"
       end
     end
   end

@@ -1,6 +1,7 @@
 require 'stone/asts/list'
 require 'stone/evaluator_extensions/class_evaluator'
 require 'stone/evaluator_extensions/array_evaluator'
+require 'stone/evaluator_extensions/let_op_evaluator'
 
 module Stone
   module AST
@@ -8,6 +9,7 @@ module Stone
       class Binary < List
         prepend ClassEvaluator
         prepend ArrayEvaluator
+        prepend LetOpEvaluator
 
         def left
           children[0]

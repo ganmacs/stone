@@ -1,0 +1,2 @@
+let(inc, fun (c, d) { c + d })
+inc(3,2)
