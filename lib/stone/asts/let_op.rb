@@ -4,7 +4,6 @@ require 'stone/ast'
 module Stone
   module AST
     class LetOp < List
-
       def op
         args[0].children[1].token.text
       end

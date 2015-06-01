@@ -13,10 +13,10 @@ module Stone
         ast = parser.parse(lexer)
         result.push(ast.eval(env))
 
-        next unless !env['let_op'].nil?
+        next if env['let_op'].nil?
         env['let_op'].reject { |k, _| in?(k) }.each do |k, _|
           added_op << k
-          parser.add_operator(k, 2)
+          parser.add_extended_rule(k)
         end
       end
       result

@@ -1,4 +1,5 @@
 require 'set'
+require 'stone/extender'
 require 'stone/parser_extensions/func_parser'
 require 'stone/parser_extensions/class_parser'
 require 'stone/parser_extensions/array_parser'
@@ -16,6 +17,7 @@ module Stone
     prepend ClassParser
     prepend ArrayParser
     prepend LetBindingParser
+    include Extender
 
     REVERVED = [';', '}', Token::EOL].freeze
     OPERATORS = [['=',  1, Operators::RIGHT],
@@ -35,10 +37,6 @@ module Stone
 
     def parse(lexer)
       program.parse(lexer)
-    end
-
-    def add_operator(name, pre)
-      operators.add(name, pre, Operators::LEFT)
     end
 
     private
