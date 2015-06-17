@@ -14,14 +14,14 @@ module Stone
   module Extender
     def add_extended_rule(op)
       add_operator(op, 2)
-      extend_tenary
+      extend_binary
     end
 
     def add_operator(name, pre)
       operators.add(name, pre, Stone::Parser::Operators::LEFT)
     end
 
-    def extend_tenary
+    def extend_binary
       extend_tenaryis = rule.expression(factor, operators, Stone::AST::Expression::Binary)
       expression.insert_choice(extend_tenaryis)
     end
