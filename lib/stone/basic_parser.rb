@@ -45,6 +45,7 @@ module Stone
       @rule ||= rule
     end
 
+    # <primary> := "(" <expr> ")" | NUM | IDEN | STR
     def primary
       @primary ||= rule(Stone::AST::Expression::Primary).or(rule.sep('(').ast(expr0).sep(')'),
                                                             rule.number(Stone::AST::Literal::Number),
@@ -52,6 +53,7 @@ module Stone
                                                             rule.string(Stone::AST::Literal::String))
     end
 
+    # <factor> := "-" <primary> | <primary>
     def factor
       @factor ||= rule.or(
         rule(Stone::AST::Expression::Negative).sep('-').ast(primary),
@@ -68,9 +70,12 @@ module Stone
 
     def block
       @block ||= rule(Stone::AST::Statement::Block)
+      @block ||= begin
+        rule(Stone::AST::Statement::Block)
         .sep('{').option(statement0)
         .repeat(rule.sep(';', Token::EOL).option(statement0))
         .sep('}')
+      end
     end
 
     def simple

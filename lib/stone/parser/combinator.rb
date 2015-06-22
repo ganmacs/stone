@@ -14,7 +14,7 @@ module Stone
 
       def initialize(klass)
         return reset if klass.nil?
-        if klass.respond_to?(:elements) || klass.new([]).respond_to?(:elements)
+        if klass.respond_to?(:elements)
           @elements = klass.elements
           @builder = klass.builder
         else
@@ -100,7 +100,7 @@ module Stone
         else
           other = Combinator.new(self)
           reset
-          self.or(other, parser)
+          self.or(parser, other)
         end
         self
       end

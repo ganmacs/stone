@@ -13,7 +13,7 @@ module Stone
           token = lexer.read_token
           if token.id?
             token_str = @tokens.find { |t| t == token.text }
-            raise "parse exception #{token}" if token_str.nil?
+            raise "parse exception #{token.text}" if token_str.nil?
             find(token)
           end
         end

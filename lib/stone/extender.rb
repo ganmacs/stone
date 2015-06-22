@@ -22,8 +22,8 @@ module Stone
     end
 
     def extend_binary
-      extend_tenaryis = rule.expression(factor, operators, Stone::AST::Expression::Binary)
-      expression.insert_choice(extend_tenaryis)
+      extend_binary = rule.expression(factor, operators, Stone::AST::Expression::Binary)
+      expression.insert_choice(extend_binary)
     end
   end
 end
